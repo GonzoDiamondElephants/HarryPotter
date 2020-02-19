@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Jolly+Lodger" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css"> 
+  </head>
+  <body >
+    <div id="hogwarts-background">
+        <div id="form-wrapper">
+          <h1>Application to Hogwarts</h1>
+          <form>
+            <label for="wizard-name">Your Name: </label>
+            <input type="text" id="wizard-name" name="wizard-name">
+            <br><br>
+
+            Are either of your parents a muggle?
+            <br>
+            <input type="radio" id="yes-muggle" name="muggle-parent" value="yes">
+            <label>Yes</label>
+            <br>
+            <input type="radio" id="no-muggle" name="muggle-parent" value="no">
+            <label>No</label>
+            <br><br>
+
+            Pick an element:
+            <br>
+            <input type="checkbox" >
+            <label>Air</label>
+            <br>
+            <input type="checkbox">
+            <label>Water</label>
+            <br>
+            <input type="checkbox">
+            <label>Fire</label>
+            <br><br>
+
+            What trait describes you best?
+            <br>
+            <select name="traits">
+              <option value="brave">Brave</option>
+              <option value="loyal.">Loyal</option>
+              <option value="creativity">Creative</option>
+              <option value="leader">Leader</option>
+            </select>
+            <a href="FILLER - WILL BE THE SORTING PAGE ROUTE" type="submit" value="Submit" id="myButton">Expecto Applyo</a>
+          </form>
+        </div>
+    </div>
+  </body>
+  <footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+    <script src="js/app.js"></script>
+  </footer>
+</html>
