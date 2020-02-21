@@ -2,10 +2,6 @@ html, body{
     height: 100%;
     margin: 0px;
   }
-  *{
-    background-color: blue;
-  }
-
   #hogwarts-background{
     width: 100%;
     height: 100%;
