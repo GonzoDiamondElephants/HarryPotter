@@ -1,0 +1,29 @@
+{
+  "name": "gitSorted",
+  "version": "1.0.0",
+  "description": "User stories:  * https://trello.com/b/eykor8BW/gonzodiamondelephants",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GonzoDiamondElephants/gitSorted.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GonzoDiamondElephants/gitSorted/issues"
+  },
+  "homepage": "https://github.com/GonzoDiamondElephants/gitSorted#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "pg": "^7.18.1",
+    "superagent": "^5.2.2"
+  }
+}
