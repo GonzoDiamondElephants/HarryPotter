@@ -61,12 +61,12 @@ $.ajax('/weather', { method: 'get', datatype: 'json' })
 // // Sian Api house constructor.
 
 function Harrypotter(obj) {
-  this.name = obj.houseName;
+  this.houseName = obj.houseName;
   this.trait = obj.trait;
   this.description = obj.description;
   this.icon = obj.icon;
   this.magicNumber = obj.magicNumber;
-  this.rival = obj.rival;
+  this.rivalHouse = obj.rival;
 }
 
 Harrypotter.prototype.render = function () {
@@ -74,6 +74,11 @@ Harrypotter.prototype.render = function () {
   let template = Handlebars.compile(source);
   return template(this)
 }
+
+let sortedHouse = '';
+let sortedRivalHouse = '';
+
+
 
 $('#applicationForm').on('submit', function (e) {
   console.log('above preventdefault');
@@ -95,7 +100,10 @@ $('#applicationForm').on('submit', function (e) {
         // console.log('normalize data', normalizeData.magicNumber);
         console.log('inside house render total', total);
         if (houseNumber === total){
-          console.log('normalized data', normalizeData);
+          sortedHouse = normalizeData.houseName;
+          sortedRivalHouse = normalizeData.rivalHouse;
+          console.log('sorted house', sortedHouse);
+          console.log('rival house', sortedRivalHouse);
           let renderData = normalizeData.render();
           $('#houseHarry').append(renderData);
         }
