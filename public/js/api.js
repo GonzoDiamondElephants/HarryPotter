@@ -1,6 +1,6 @@
 'use strict';
 
-
+let total = 0;
 
 $.ajax('/harryporter', { method: 'get', datatype: 'json' })
   .then(data => {
@@ -32,26 +32,41 @@ $.ajax('/weather', { method: 'get', datatype: 'json' })
 // }
 
 
-$.ajax('/hp-house', { method: 'get', datatype: 'json' })
-  .then(data => {
-    data.forEach(house => {
-      console.log('this is forEach data', house);
-      let normilaizeData = new Harrypotter(house);
-      // console.log('this is normilize data', normilaizeData);
-      let renderData = normilaizeData.render();
-      $('#house-Harry').append(renderData);
-    })
+// $.ajax('/hp-house', { method: 'get', datatype: 'json' })
+//   .then(data => {
+//     data.forEach(house => {
+//       let normalizeData = new Harrypotter(house);
+//       console.log('normalize data', normalizeData.magicNumber);
+//       console.log('inside house render total', total);
+//       if (normalizeData.magicNumber === total){
+//         let renderData = this.normalizeData.render ();
+//         $('#houseHarry').append(renderData);
+//       }
+//     })
+//   })
 
+// $.ajax('/hp-house', { method: 'get', datatype: 'json' })
+//   .then(data => {
+//     data.forEach(house => {
+//       let normalizeData = new Harrypotter(house);
+//       console.log('normalize data', normalizeData);
+//       if (normalizeData.magicNumber === total){
+//         let dataValue = Object.value(normalizeData);
+//         let renderData = dataValue.render();
+//         $('#houseHarry').append(renderData);
+//       }
+//     })
+//   })
 
-  })
-
-// // Sian Api house constracter . 
+// // Sian Api house constructor.
 
 function Harrypotter(obj) {
   this.name = obj.houseName;
   this.trait = obj.trait;
-  this.discription = obj.description;
+  this.description = obj.description;
   this.icon = obj.icon;
+  this.magicNumber = obj.magicNumber;
+  this.rival = obj.rival;
 }
 
 Harrypotter.prototype.render = function () {
@@ -63,15 +78,28 @@ Harrypotter.prototype.render = function () {
 $('#applicationForm').on('submit', function (e) {
   console.log('above preventdefault');
   e.preventDefault();
-  let total = Math.round((parseInt(e.target.favClass.value) +
+  total = Math.round((parseInt(e.target.favClass.value) +
     parseInt(e.target.companionAnimal.value) +
     parseInt(e.target.wandType.value) +
     parseInt(e.target.gift.value) +
     parseInt(e.target.book.value)) / 5);
 
+  // console.log('book value', total);
 
-
-
-  console.log('book value', total);
+  $.ajax('/hp-house', { method: 'get', datatype: 'json' })
+    .then(data => {
+      data.forEach(house => {
+        let normalizeData = new Harrypotter(house);
+        console.log(typeof(normalizeData.magicNumber));
+        let houseNumber = parseInt(normalizeData.magicNumber);
+        // console.log('normalize data', normalizeData.magicNumber);
+        console.log('inside house render total', total);
+        if (houseNumber === total){
+          console.log('normalized data', normalizeData);
+          let renderData = normalizeData.render();
+          $('#houseHarry').append(renderData);
+        }
+      })
+    })
 })
 
