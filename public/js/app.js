@@ -9,7 +9,12 @@
 // }
 
 
-
+$('#applicationForm').on('submit', function (e) {
+  console.log('the form we submit');
+  e.preventDefault();
+  e.target.book.value;
+  console.log('gift value', e.target.gift.value);
+})
 
 
 

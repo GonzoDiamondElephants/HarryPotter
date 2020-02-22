@@ -10,7 +10,13 @@ const app = express();
 require('ejs');
 app.use(cors());
 
+
+app.get('/', renderIndex);
 app.get('/weather', weatherHandler);
+app.get('/harryporter', apiHandler);
+app.get('/hp-house', houseApiHandler);
+
+// app.get('/results', resultsHandler);
 
 // function renderWeather(req, res) {
 //   // res.render(`./weather`);
@@ -22,11 +28,8 @@ app.set('view engine', 'ejs');
 // const aliveAgain = require('./app');
 
 
-app.get('/', renderIndex);
-app.get('/harryporter', apiHandler);
 
 function renderIndex(req, res) {
-
   res.status(200).render('./index');
 }
 
@@ -34,10 +37,7 @@ function apiHandler(req, res) {
   let URL = `https://www.potterapi.com/v1/characters?key=$2a$10$LndczsEp4R/F8gnZKCS0x.oeqF6WSS7sP9xnYax4nYpB.hu8xwKse`;
   superagent.get(URL)
     .then(data => {
-
-      // console.log(data.body)
       res.send(data.body);
-
     })
 
     .catch(() => errorHandler('error 500!! something has wrong on  apiHandler function', req, res));
@@ -46,8 +46,7 @@ function apiHandler(req, res) {
 // WEATHER CODE
 
 //weather function
-
-function Weather (data) {
+function Weather(data) {
   this.icon = data.icon;
   this.summary = data.summary;
 }
@@ -57,12 +56,24 @@ function weatherHandler(req, res) {
   superagent.get(weatherURL)
     .then(data => {
       const weatherForecast = new Weather(data.body.currently);
-      console.log(weatherForecast);
       res.send(weatherForecast);
     })
-    .catch ((err) => errorHandler(`error 500!! something has wrong on  weatherHandler function, ${err.message}`, req, res));
+    .catch((err) => errorHandler(`error 500!! something has wrong on  weatherHandler function, ${err.message}`, req, res));
 }
 
+
+/// MADEAPIHANDLER . 
+
+function houseApiHandler(req, res) {
+  let madeURL = `https://hp-houses-api.herokuapp.com/`;
+  // console.log(madeURL)
+  superagent.get(madeURL)
+    .then(data => {
+      console.log(data)
+      res.send(data.body);
+    })
+    .catch((err) => errorHandler(`error 500 !! something has wrong on madeApiHandler, ${err.message}`, req, res));
+}
 
 // const client = new pg.Client(process.env.DATABASE_URL);
 
@@ -81,6 +92,19 @@ function errorHandler(error, request, response) {
 //server "listener"
 
 // app.get('app.js', aliveAgain);
+
+// function resultsHandler(req, res) {
+//   $('#applicationForm').on('submit', function (e) {
+//     e.defaultValue();
+//     console.log(e);
+//     e.target.gift.value
+//     console.log('gift value', e.target.gift.value);
+//   })
+//   res.render()
+
+// }
+
+
 
 
 app.listen(PORT, () => console.log(`Server up on port ${PORT}`))
