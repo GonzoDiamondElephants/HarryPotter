@@ -1,16 +1,12 @@
 'use strict';
 
+
+
 let total = 0;
-
-$.ajax('/harryporter', { method: 'get', datatype: 'json' })
-  .then(data => {
-    console.log(data);
-
-  });
 
 $.ajax('/weather', { method: 'get', datatype: 'json' })
   .then(data => {
-    console.log(data)
+
     const dataKeys = Object.keys(data)
     const dataValues = Object.values(data)
 
@@ -30,33 +26,6 @@ $.ajax('/weather', { method: 'get', datatype: 'json' })
 //   return template(this);
 
 // }
-
-
-// $.ajax('/hp-house', { method: 'get', datatype: 'json' })
-//   .then(data => {
-//     data.forEach(house => {
-//       let normalizeData = new Harrypotter(house);
-//       console.log('normalize data', normalizeData.magicNumber);
-//       console.log('inside house render total', total);
-//       if (normalizeData.magicNumber === total){
-//         let renderData = this.normalizeData.render ();
-//         $('#houseHarry').append(renderData);
-//       }
-//     })
-//   })
-
-// $.ajax('/hp-house', { method: 'get', datatype: 'json' })
-//   .then(data => {
-//     data.forEach(house => {
-//       let normalizeData = new Harrypotter(house);
-//       console.log('normalize data', normalizeData);
-//       if (normalizeData.magicNumber === total){
-//         let dataValue = Object.value(normalizeData);
-//         let renderData = dataValue.render();
-//         $('#houseHarry').append(renderData);
-//       }
-//     })
-//   })
 
 // // Sian Api house constructor.
 
@@ -108,6 +77,19 @@ $('#applicationForm').on('submit', function (e) {
           $('#houseHarry').append(renderData);
         }
       })
+      return {sortedHouse, sortedRivalHouse}
     })
+    .then( (data) => {
+      $.ajax({
+        url: '/harrypotter',
+        method: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        dataType: 'json'
+      })
+    })
+    // $.ajax('/harrypotter', { method: 'post', dataType: 'json', data: {"test": "testing my patience"} } );
+    // send a post request to get the sortedhouse and sortedrivalhouse
+
 })
 

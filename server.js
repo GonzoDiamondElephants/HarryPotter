@@ -9,12 +9,12 @@ const PORT = process.env.PORT;
 const app = express();
 require('ejs');
 app.use(cors());
-
+app.use(express.json());
 
 
 app.get('/', renderIndex);
 app.get('/weather', weatherHandler);
-app.get('/harryporter', apiHandler);
+app.post('/harrypotter', apiHandler);
 app.get('/hp-house', houseApiHandler);
 
 // app.get('/results', resultsHandler);
@@ -35,7 +35,8 @@ function renderIndex(req, res) {
 }
 
 function apiHandler(req, res) {
-  let URL = `https://www.potterapi.com/v1/characters?key=$2a$10$LndczsEp4R/F8gnZKCS0x.oeqF6WSS7sP9xnYax4nYpB.hu8xwKse`;
+  console.log('i want this body!', (req.body));
+  let URL = `https://hp-api.herokuapp.com/api/characters`;
   superagent.get(URL)
     .then(data => {
       res.send(data.body);
@@ -70,7 +71,6 @@ function houseApiHandler(req, res) {
   // console.log(madeURL)
   superagent.get(madeURL)
     .then(data => {
-      console.log(data)
       res.send(data.body);
     })
     .catch((err) => errorHandler(`error 500 !! something has wrong on madeApiHandler, ${err.message}`, req, res));
