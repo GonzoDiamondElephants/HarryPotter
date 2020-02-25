@@ -2,22 +2,19 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="/css/reset.css">
-  <link rel="stylesheet" href="/css/style.css">
-  <title><strong>What?!</strong></title>
+  <%- include('layout.ejs') %>
 
-   
 
-  <script id="harry-pot" type="text/x-handlebars-template">
-    <section>
-        <h2>{{houseName}}</h2>
-        <p>{{trait}}</p>
-        <p>{{description}}</p>
-        <img src="{{icon}}">
-      </section>
-  </script>
-
-  <script id="threeFriends" type="text/x-handlebars-template">
+              <!-- handlebars templates -->
+              <script id="harry-pot" type="text/x-handlebars-template">
+                <section class="houseInfo" >
+                    <h2>Welcome to {{houseName}}</h2>
+                    <img class="shield" alt="{{icon}} house shield" src="{{icon}}">
+                    <p class="trait">The top trait of those in {{houseName}}, is {{trait}}</p>
+                    <p class="desc" id="{{houseName}}">{{description}}</p>
+                  </section>
+              </script>
+  <!-- <script id="threeFriends" type="text/x-handlebars-template">
     <section>
         <img src="{{image}}">
         <p>{{name}}</p>
@@ -30,85 +27,114 @@
         <p>{{name}}</p>
         <p>{{house}}</p>
       </section>
-  </script>
+  </script> -->
+  
 
 
 </head>
 
 <body>
+<!-- Floating candles - will link to presentation <section> -->
+  <div class="alwaysVisible"><img id="logo" src="https://media.giphy.com/media/51SNhLPRbhSIBmEPG5/giphy.gif"></div>
   <section id="section1">
-    <p>Heeey!</p>
+  
+   <!-- placeholers/proof of life -->
+    <!-- <p>Heeey!</p>
   </section>
 
   <section id="section2">
     <p>HEEEY! 2</p>
-  </section>
+  </section> -->
 
-
+<!-- homepage div -->
   <div id="homePage">
     <div id="hogwartsBackground">
       <div id="formWrapper">
         <h1>Application to Hogwarts</h1>
         <form id="applicationForm">
           <label> Your Name: </label>
-          <input type="text" id="wizardName">
+          <input type="text" id="wizardName"><br><br>
 
-          <p>What class are you most exicted about?</p>
+          <p class="quizQuestion">What class are you most exicted about?</p>
           <select name="favClass">
-            <option value="0" disabled selected>Select your option</option>
+            <!-- <option value="0" disabled selected>Pick your favorite...</option> -->
             <option value="1">Defense Against the Dark Arts</option>
             <option value="2">Potions</option>
             <option value="3">Charms</option>
             <option value="4">Herbology</option>
           </select>
+          <br><br>
 
-          <p>For your first day, you'll need a companion animal. Which will you choose?</p>
+          <p class="quizQuestion">For your first day, you'll need a companion animal. Which will you choose?</p>
           <select name="companionAnimal">
+            <!-- <option value="0" disabled selected>Pick an animal...</option> -->
             <option value="1">Owl</option>
             <option value="2">Snake</option>
             <option value="3">Badger</option>
             <option value="4">Raven</option>
           </select>
+          <br><br>
 
-          <p>You're at Olivander's, what wand's core would choose you?</p>
+          <p class="quizQuestion">You're at Olivander's, what wand's core would choose you?</p>
           <select name="wandType">
+            <!-- <option value="0" disabled selected>Pick a wand core...</option> -->
             <option value="1">Dragon Heartstring</option>
             <option value="2">White River Monster Spine</option>
             <option value="3">Snallygaster heartstring</option>
             <option value="4">Troll Whisker</option>
           </select>
+          <br><br>
 
 
-          <p>It's your birthday and you've received a magical gift via Owl Post. What is it?</p>
+          <p class="quizQuestion">It's your birthday and you've received a magical gift via Owl Post. What is it?</p>
           <select name="gift">
-            <option value="1">A hand-knit sweater w/ your first initial sewn on the front</option>
+            <!-- <option value="0" disabled selected>Pick a gift...</option> -->
+            <option value="1">A hand-knit sweater w/ your first initial on the front</option>
             <option value="2">Marauder's Map</option>
             <option value="3">A Rememberal</option>
-            <option value="4">A mature potter Mandrake</option>
+            <option value="4">A Mature Potted Mandrake</option>
           </select>
+          <br><br>
 
-          <p>What book would you check out for a bit of light reading?</p>
+          <p class="quizQuestion">What book would you check out for a bit of light reading?</p>
           <select name="book">
+            <!-- <option value="0" disabled selected>Pick a book...</option> -->
             <option value="1">Self Defense Spellbook</option>
-            <option value="2">Secrets of the Darkest Arts.</option>
+            <option value="2">Secrets of the Darkest Arts</option>
             <option value="3">Fantastic Beasts</option>
             <option value="4">Tales of Beedle the Bard</option>
           </select>
+          <br><br>
 
           <button type="submit" value="submit" id="expectoApplyo">Expecto Applyo</button>
         </form>
       </div>
     </div>
   </div>
-  <article id="houseHarry">
 
 
-  </article>
 
-  <section>
-    <div id="hallBackground"></div>
 
-  </section>
+  <div id="showHouse"> 
+    <div id="hallBackgroundTWO">
+      <div class="weatherContainer"></div>
+      <div id="hallWrapper">
+        <h1>You've been sorted!</h1>
+        <article id="houseHarry">
+        </article>
+        <section>
+          <div id="hallBackground">
+            <!-- holds house house info, -->
+            <!-- friends,  -->
+            <!-- twoFoes, -->
+            <!-- weather -->
+          </div>
+        </section>
+                                
+        </div>
+      </div>
+    </div> 
+    
 
 
 

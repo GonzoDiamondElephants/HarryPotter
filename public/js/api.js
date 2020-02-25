@@ -1,22 +1,13 @@
 'use strict';
 
-
+$( document ).ready(function() {
+  $('#homePage').show();
+  $('#showHouse').hide();
+})
 
 let total = 0;
 
-$.ajax('/weather', { method: 'get', datatype: 'json' })
-  .then(data => {
 
-    const dataKeys = Object.keys(data)
-    const dataValues = Object.values(data)
-
-    for (let i = 0; i < dataKeys.length; i++) {
-      console.log(data[dataKeys[i]])
-      $('#harry-pot').append('<p>book</p>');
-      console.log($('#harry-pot'))
-
-    }
-  })
 
 
 // // Sian Api house constructor.
@@ -84,7 +75,8 @@ $('#applicationForm').on('submit', function (e) {
           renderMoreStuff(data);
         })
     })
-
+  $('#showHouse').show();
+  $('#homePage').hide();
 
 })
 
@@ -108,6 +100,17 @@ function renderMoreStuff (students) {
     $('#hallBackground').append(`<img src="${image}" alt="foe" >`);
   }
 }
+
+$.ajax('/weather', { method: 'get', datatype: 'json' })
+  .then(data => {
+    console.log(data)
+    const dataValues = Object.values(data)
+    for (let i = 0; i < 1; i++) {
+      $('.weatherContainer').append(`<div class=${dataValues[i]}>PROOF</div>` , `<p  id="currentWeather">The current weather at Hogwarts is: ${dataValues[1]}.`);
+      console.log('one more',dataValues);
+    }
+  })
+
 
 
 
