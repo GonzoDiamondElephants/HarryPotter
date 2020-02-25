@@ -50,18 +50,18 @@ $('#applicationForm').on('submit', function (e) {
     parseInt(e.target.gift.value) +
     parseInt(e.target.book.value)) / 5);
 
-  // console.log('book value', total);
+    // here we are going to put in the if else statement for the database check
+
 
   $.ajax('/hp-house', { method: 'get', datatype: 'json' })
     .then(data => {
       data.forEach(house => {
         let normalizeData = new Harrypotter(house);
-        console.log(typeof(normalizeData.magicNumber));
         let houseNumber = parseInt(normalizeData.magicNumber);
-        // console.log('normalize data', normalizeData.magicNumber);
         console.log('inside house render total', total);
         if (houseNumber === total){
           sortedHouse = normalizeData.houseName;
+          // here is where we get the sorted house and need to add it database 
           sortedRivalHouse = normalizeData.rivalHouse;
           console.log('sorted house', sortedHouse);
           console.log('rival house', sortedRivalHouse);
@@ -80,6 +80,8 @@ $('#applicationForm').on('submit', function (e) {
         dataType: 'json'
       })
         .then( (data) => {
+
+          // can we keep and send magic number and friends and foes AND house here
           renderStuff(data);
           renderMoreStuff(data);
         })
