@@ -16,16 +16,8 @@ $.ajax('/weather', { method: 'get', datatype: 'json' })
       console.log($('#harry-pot'))
 
     }
-    // console.log(data);
-    // let renderData = data.render();
-    // // return template;
   })
-// weather.prototype.render = function () {
-//   let source = $('#harry-pot').html();
-//   let template = Handlebars.compile(source);
-//   return template(this);
 
-// }
 
 // // Sian Api house constructor.
 
@@ -87,9 +79,35 @@ $('#applicationForm').on('submit', function (e) {
         contentType: 'application/json',
         dataType: 'json'
       })
+        .then( (data) => {
+          renderStuff(data);
+          renderMoreStuff(data);
+        })
     })
-    // $.ajax('/harrypotter', { method: 'post', dataType: 'json', data: {"test": "testing my patience"} } );
-    // send a post request to get the sortedhouse and sortedrivalhouse
+
 
 })
+
+
+function renderStuff (students) {
+  for ( let i = 0; i < students.friends.length; i++){
+    let name = students.friends[i].name;
+    let image = students.friends[i].image;
+
+    $('#hallBackground').append(`<div class="friend">${name}</div>`);
+    $('#hallBackground').append(`<img src="${image}" alt="friend" >`);
+  }
+}
+
+function renderMoreStuff (students) {
+  for ( let i = 0; i < students.foes.length; i++){
+    let name = students.foes[i].name;
+    let image = students.foes[i].image;
+
+    $('#hallBackground').append(`<div class="foe">${name}</div>`);
+    $('#hallBackground').append(`<img src="${image}" alt="foe" >`);
+  }
+}
+
+
 

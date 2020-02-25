@@ -12,6 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 
+
 app.get('/', renderIndex);
 app.get('/weather', weatherHandler);
 app.post('/harrypotter', apiHandler);
@@ -34,16 +35,73 @@ function renderIndex(req, res) {
   res.status(200).render('./index');
 }
 
+
+
+
 function apiHandler(req, res) {
-  console.log('i want this body!', (req.body));
+  // console.log('i want this body!', (req.body));
+  let sortedHouse = req.body.sortedHouse;
+  let sortedRivalHouse = req.body.sortedRivalHouse;
   let URL = `https://hp-api.herokuapp.com/api/characters`;
   superagent.get(URL)
     .then(data => {
-      res.send(data.body);
+      let friends = [];
+      let foes = [];
+      let houseFriends = data.body.filter(houseobj => {
+        return houseobj.house === sortedHouse;
+      })
+      for (let i = 0; i < 3; i++){
+        let myFriends = new Friends(houseFriends[i]);
+        friends.push(myFriends);
+      }
+      let houseFoes = data.body.filter(houseobj => {
+        return houseobj.house === sortedRivalHouse;
+      })
+      for (let i = 0; i < 2; i++){
+        let myFoes = new Foes(houseFoes[i]);
+        foes.push(myFoes);
+      }
+      // console.log('friends', houseFriends);
+      // console.log('foes', houseFoes);
+
+
+      // need a constructor function and then to send index.ejs
+      // res.send(data.body);
+
+      res.status(200).json({friends, foes})
     })
 
     .catch(() => errorHandler('error 500!! something has wrong on  apiHandler function', req, res));
 }
+
+//constructor function for friends and foes
+
+function Friends (data) {
+  this.name = data.name;
+  this.image = data.image;
+}
+
+function Foes (data) {
+  this.name = data.name;
+  this.house = data.house;
+  this.image = data.image;
+}
+
+
+Friends.prototype.render = function (){
+  const source = $('#threeFriends').html();
+  let template = Handlebars.compile(source);
+  return template(this);
+}
+
+Foes.prototype.render = function (){
+  const source = $('#harry-pot').html();
+  let template = Handlebars.compile(source);
+  return template(this);
+}
+
+
+
 
 // WEATHER CODE
 
