@@ -87,9 +87,18 @@ $('#applicationForm').on('submit', function (e) {
         contentType: 'application/json',
         dataType: 'json'
       })
+        .then( (data) => {
+          renderStuff(data);
+        })
     })
-    // $.ajax('/harrypotter', { method: 'post', dataType: 'json', data: {"test": "testing my patience"} } );
-    // send a post request to get the sortedhouse and sortedrivalhouse
+
 
 })
 
+
+function renderStuff (students) {
+  console.log(students);
+  // students.friends.forEach (friend => {
+
+  // })
+}
