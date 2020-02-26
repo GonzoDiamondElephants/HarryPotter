@@ -11,32 +11,17 @@ require('ejs');
 app.use(cors());
 app.use(express.json());
 
-
-
 app.get('/', renderIndex);
 app.get('/weather', weatherHandler);
 app.post('/harrypotter', apiHandler);
 app.get('/hp-house', houseApiHandler);
 
-// app.get('/results', resultsHandler);
-
-// function renderWeather(req, res) {
-//   // res.render(`./weather`);
-// }
-
 app.use(express.static('./public'));
 app.set('view engine', 'ejs');
-
-// const aliveAgain = require('./app');
-
-
 
 function renderIndex(req, res) {
   res.status(200).render('./index');
 }
-
-
-
 
 function apiHandler(req, res) {
   // console.log('i want this body!', (req.body));
@@ -50,28 +35,20 @@ function apiHandler(req, res) {
       let houseFriends = data.body.filter(houseobj => {
         return houseobj.house === sortedHouse;
       })
-      for (let i = 0; i < 3; i++){
+      for (let i = 0; i < 1; i++){
         let myFriends = new Friends(houseFriends[i]);
         friends.push(myFriends);
       }
       let houseFoes = data.body.filter(houseobj => {
         return houseobj.house === sortedRivalHouse;
       })
-      for (let i = 0; i < 2; i++){
+      for (let i = 0; i < 1; i++){
         let myFoes = new Foes(houseFoes[i]);
         foes.push(myFoes);
       }
-      // console.log('friends', houseFriends);
-      // console.log('foes', houseFoes);
-
-
-      // need a constructor function and then to send index.ejs
-      // res.send(data.body);
-
       res.status(200).json({friends, foes})
     })
-
-    .catch(() => errorHandler('error 500!! something has wrong on  apiHandler function', req, res));
+    .catch(() => errorHandler('error 500!! something is wrong on the apiHandler function', req, res));
 }
 
 //constructor function for friends and foes
@@ -87,7 +64,6 @@ function Foes (data) {
   this.image = data.image;
 }
 
-
 Friends.prototype.render = function (){
   const source = $('#threeFriends').html();
   let template = Handlebars.compile(source);
@@ -99,9 +75,6 @@ Foes.prototype.render = function (){
   let template = Handlebars.compile(source);
   return template(this);
 }
-
-
-
 
 // WEATHER CODE
 
@@ -121,8 +94,7 @@ function weatherHandler(req, res) {
     .catch((err) => errorHandler(`error 500!! something has wrong on  weatherHandler function, ${err.message}`, req, res));
 }
 
-
-/// MADEAPIHANDLER . 
+/// MADEAPIHANDLER
 
 function houseApiHandler(req, res) {
   let madeURL = `https://hp-houses-api.herokuapp.com/`;
@@ -134,37 +106,10 @@ function houseApiHandler(req, res) {
     .catch((err) => errorHandler(`error 500 !! something has wrong on madeApiHandler, ${err.message}`, req, res));
 }
 
-// const client = new pg.Client(process.env.DATABASE_URL);
-
-// client.on('error', err => console.error(err));
-// app.get('/', (request, response) => {
-//   response.send(`It's alllllive!`);
-// });
-
 //helper functions (error catching)
-
 
 function errorHandler(error, request, response) {
   response.status(500).send(error);
 }
 
-//server "listener"
-
-// app.get('app.js', aliveAgain);
-
-// function resultsHandler(req, res) {
-//   $('#applicationForm').on('submit', function (e) {
-//     e.defaultValue();
-//     console.log(e);
-//     e.target.gift.value
-//     console.log('gift value', e.target.gift.value);
-//   })
-//   res.render()
-
-// }
-
-
-
-
 app.listen(PORT, () => console.log(`Server up on port ${PORT}`))
-

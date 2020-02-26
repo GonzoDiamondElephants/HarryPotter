@@ -6,11 +6,10 @@ $( document ).ready(function() {
 })
 
 let total = 0;
+let sortedHouse = '';
+let sortedRivalHouse = '';
 
-
-
-
-// // Sian Api house constructor.
+// // Sian API house constructor.
 
 function Harrypotter(obj) {
   this.houseName = obj.houseName;
@@ -27,10 +26,7 @@ Harrypotter.prototype.render = function () {
   return template(this)
 }
 
-let sortedHouse = '';
-let sortedRivalHouse = '';
-
-
+//Application Code
 
 $('#applicationForm').on('submit', function (e) {
   console.log('above preventdefault');
@@ -41,15 +37,12 @@ $('#applicationForm').on('submit', function (e) {
     parseInt(e.target.gift.value) +
     parseInt(e.target.book.value)) / 5);
 
-  // console.log('book value', total);
-
   $.ajax('/hp-house', { method: 'get', datatype: 'json' })
     .then(data => {
       data.forEach(house => {
         let normalizeData = new Harrypotter(house);
         console.log(typeof(normalizeData.magicNumber));
         let houseNumber = parseInt(normalizeData.magicNumber);
-        // console.log('normalize data', normalizeData.magicNumber);
         console.log('inside house render total', total);
         if (houseNumber === total){
           sortedHouse = normalizeData.houseName;
@@ -77,9 +70,7 @@ $('#applicationForm').on('submit', function (e) {
     })
   $('#showHouse').show();
   $('#homePage').hide();
-
 })
-
 
 function renderStuff (students) {
   for ( let i = 0; i < students.friends.length; i++){
@@ -101,6 +92,8 @@ function renderMoreStuff (students) {
   }
 }
 
+//Weather ajax call
+
 $.ajax('/weather', { method: 'get', datatype: 'json' })
   .then(data => {
     console.log(data)
@@ -110,7 +103,3 @@ $.ajax('/weather', { method: 'get', datatype: 'json' })
       console.log('one more',dataValues);
     }
   })
-
-
-
-
