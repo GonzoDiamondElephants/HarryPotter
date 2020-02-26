@@ -1,6 +1,9 @@
 'use strict';
 
-$( document ).ready(function() {
+
+
+
+$(document).ready(function () {
   $('#homePage').show();
   $('#showHouse').hide();
 })
@@ -41,10 +44,10 @@ $('#applicationForm').on('submit', function (e) {
     .then(data => {
       data.forEach(house => {
         let normalizeData = new Harrypotter(house);
-        console.log(typeof(normalizeData.magicNumber));
+        console.log(typeof (normalizeData.magicNumber));
         let houseNumber = parseInt(normalizeData.magicNumber);
         console.log('inside house render total', total);
-        if (houseNumber === total){
+        if (houseNumber === total) {
           sortedHouse = normalizeData.houseName;
           sortedRivalHouse = normalizeData.rivalHouse;
           console.log('sorted house', sortedHouse);
@@ -53,9 +56,9 @@ $('#applicationForm').on('submit', function (e) {
           $('#houseHarry').append(renderData);
         }
       })
-      return {sortedHouse, sortedRivalHouse}
+      return { total, sortedHouse, sortedRivalHouse }
     })
-    .then( (data) => {
+    .then((data) => {
       $.ajax({
         url: '/harrypotter',
         method: 'POST',
@@ -63,7 +66,7 @@ $('#applicationForm').on('submit', function (e) {
         contentType: 'application/json',
         dataType: 'json'
       })
-        .then( (data) => {
+        .then((data) => {
           renderStuff(data);
           renderMoreStuff(data);
         })
@@ -72,8 +75,8 @@ $('#applicationForm').on('submit', function (e) {
   $('#homePage').hide();
 })
 
-function renderStuff (students) {
-  for ( let i = 0; i < students.friends.length; i++){
+function renderStuff(students) {
+  for (let i = 0; i < students.friends.length; i++) {
     let name = students.friends[i].name;
     let image = students.friends[i].image;
 
@@ -82,8 +85,8 @@ function renderStuff (students) {
   }
 }
 
-function renderMoreStuff (students) {
-  for ( let i = 0; i < students.foes.length; i++){
+function renderMoreStuff(students) {
+  for (let i = 0; i < students.foes.length; i++) {
     let name = students.foes[i].name;
     let image = students.foes[i].image;
 
@@ -99,7 +102,7 @@ $.ajax('/weather', { method: 'get', datatype: 'json' })
     console.log(data)
     const dataValues = Object.values(data)
     for (let i = 0; i < 1; i++) {
-      $('.weatherContainer').append(`<div class=${dataValues[i]}>PROOF</div>` , `<p  id="currentWeather">The current weather at Hogwarts is: ${dataValues[1]}.`);
-      console.log('one more',dataValues);
+      $('.weatherContainer').append(`<div class=${dataValues[i]}>PROOF</div>`, `<p  id="currentWeather">The current weather at Hogwarts is: ${dataValues[1]}.`);
+      console.log('one more', dataValues);
     }
   })
