@@ -26,7 +26,7 @@ function renderIndex(req, res) {
 }
 
 let magicNumber;
-let sortedHouse;
+let sortedHouse = '';
 
 
 function apiHandler(req, res) {
