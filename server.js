@@ -25,21 +25,11 @@ function renderIndex(req, res) {
   res.status(200).render('./index');
 }
 
-let sortedHouse;
 let magicNumber;
+let sortedHouse;
 
 
 function apiHandler(req, res) {
-  // let city = request.query.city;
-  // let SQL = `SELECT * FROM ha WHERE city='${city}';`;
-  // // client.query executes sql commands
-  // client.query(SQL)
-  //   .then(results => {
-  //     if (results.rows.length > 0) {
-  //       response.send(results.rows[0]);
-
-
-
   sortedHouse = req.body.sortedHouse;
   magicNumber = req.body.total;
   let sortedRivalHouse = req.body.sortedRivalHouse;
@@ -93,7 +83,6 @@ Foes.prototype.render = function () {
 }
 
 // WEATHER CODE
-
 //weather function
 function Weather(data) {
   this.icon = data.icon;
@@ -113,13 +102,17 @@ function weatherHandler(req, res) {
 /// MADEAPIHANDLER
 
 function houseApiHandler(req, res) {
-  console.log('line 16', sortedHouse);
+  // if (`SELECT * FROM houses WHERE house='undefined';`) {
+  //   res.send([' Ravenclaw']);
+  // }
+  console.log('line 16 ', sortedHouse);
   let SQL = `SELECT * FROM houses WHERE house='${sortedHouse}';`;
   console.log('INSIDE HOUSE APIHANDLER');
   client.query(SQL)
     .then(result => {
       console.log('after dot then before if');
-      if (result.rows.length > 0) {
+
+      if (result.rows.length > 0 && result.rows[0] === undefined) {
         res.send(result.rows[0]);
         console.log('inside of if');
       } else {
@@ -129,7 +122,7 @@ function houseApiHandler(req, res) {
           // console.log(madeURL)
           superagent.get(madeURL)
             .then(data => {
-              let apiToSQL = `INSERT INTO houses (magicNumber , house) VALUES (${magicNumber} , '${sortedHouse}');`;
+              let apiToSQL = `INSERT INTO houses (magicNumber , house) VALUES (${magicNumber},'${sortedHouse}');`;
               client.query(apiToSQL);
               res.send(data.body);
 
