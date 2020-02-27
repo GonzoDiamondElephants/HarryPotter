@@ -40,7 +40,11 @@ $('#applicationForm').on('submit', function (e) {
     parseInt(e.target.gift.value) +
     parseInt(e.target.book.value)) / 5);
 
-  $.ajax('/hp-house', { method: 'get', datatype: 'json' })
+  $.ajax('/hp-house', { 
+    method: 'get', 
+    datatype: 'json', 
+    data: {total} 
+  })
     .then(data => {
       data.forEach(house => {
         let normalizeData = new Harrypotter(house);

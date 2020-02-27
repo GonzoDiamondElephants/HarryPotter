@@ -102,6 +102,7 @@ function weatherHandler(req, res) {
 /// MADEAPIHANDLER
 
 function houseApiHandler(req, res) {
+  magicNumber = req.query.total;
   // if (`SELECT * FROM houses WHERE house='undefined';`) {
   //   res.send([' Ravenclaw']);
   // }
@@ -123,6 +124,7 @@ function houseApiHandler(req, res) {
           superagent.get(madeURL)
             .then(data => {
               let apiToSQL = `INSERT INTO houses (magicNumber , house) VALUES (${magicNumber},'${sortedHouse}');`;
+              console.log(apiToSQL);
               client.query(apiToSQL);
               res.send(data.body);
 
