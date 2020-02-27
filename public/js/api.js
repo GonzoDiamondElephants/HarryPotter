@@ -6,6 +6,7 @@
 $(document).ready(function () {
   $('#homePage').show();
   $('#showHouse').hide();
+  $('#showPatronus').hide();
 })
 
 let total = 0;
@@ -73,6 +74,8 @@ $('#applicationForm').on('submit', function (e) {
     })
   $('#showHouse').show();
   $('#homePage').hide();
+  $('#showPatronus').hide();
+
 })
 
 function renderStuff(students) {
@@ -106,3 +109,24 @@ $.ajax('/weather', { method: 'get', datatype: 'json' })
       console.log('one more', dataValues);
     }
   })
+
+$('#patronusButton').on('click', function (e) {
+  e.preventDefault();
+  $.ajax('/patronusPage', { method: 'get', datatype: 'json' })
+    .then(data => {
+      let randomNum = getRandomInt(9);
+      const patronusValue = Object.values(data[randomNum]);
+      console.log('here is your info', patronusValue[0]);
+      $('#patronusContainer').append(`<div class=${patronusValue[0]}>YOUR PATRONUS IS: ${patronusValue[0]}</div>`);
+
+    })
+  $('#showHouse').hide();
+  $('#homePage').hide();
+  $('#showPatronus').show();
+})
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+

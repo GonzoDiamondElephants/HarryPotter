@@ -145,5 +145,8 @@
 	background-color: black;
 	border: 2px solid #000000;
 }
-
+#patronusButton{
+  width: 100%;
+  background-color: pink;
+}
 
