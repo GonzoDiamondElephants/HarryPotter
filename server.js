@@ -25,7 +25,7 @@ function renderIndex(req, res) {
   res.status(200).render('./index');
 }
 
-let sortedHouse;
+let sortedHouse = '';
 let magicNumber;
 
 
@@ -43,7 +43,11 @@ function apiHandler(req, res) {
   sortedHouse = req.body.sortedHouse;
   magicNumber = req.body.total;
   let sortedRivalHouse = req.body.sortedRivalHouse;
+
+
   let URL = `https://hp-api.herokuapp.com/api/characters`;
+
+  
   superagent.get(URL)
     .then(data => {
       let friends = [];
@@ -134,7 +138,7 @@ function houseApiHandler(req, res) {
               res.send(data.body);
 
             })
-            .catch((err) => errorHandler(`error 500 !! something has wrong on madeApiHandler, ${err.message}`, req, res));
+            // .catch((err) => errorHandler(`error 500 !! something has wrong on madeApiHandler, ${err.message}`, req, res));
         }
         catch (error) {
           errorHandler('muggle error.', req, res);
