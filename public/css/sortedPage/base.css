@@ -1,0 +1,149 @@
+#hallBackgroundTWO{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("https://pm1.narvii.com/6842/7cdecddeb84a4d589ed629d58158237b1a56a76cv2_hq.jpg");
+    background-position: center center;
+    background-origin: content-box;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: -2;
+  }
+
+  #hallWrapper {
+    width:70%;
+    max-width: 80%;
+    height: 80%;
+    margin: 0px auto;
+    background-size: 100%;
+    background-color: rgba(0,0,0,0.6);
+    overflow-y: scroll;
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #showHouse {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    margin-top: 20%;
+  
+  }
+
+.houseInfo { 
+    text-align: center;
+    color:white;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto;
+    justify-items: center;
+    justify-content: center;	
+    grid-template-areas: 
+    "header header header header"
+    "picture picture trait trait"
+    "picture picture desc desc"
+
+}
+
+
+.houseInfo h2 {
+    font-family: 'Jolly Lodger';
+    grid-area: header;  
+    padding: 10px;
+    font-size: 60px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.trait {
+    font-family: 'ABeeZee';
+    grid-area: trait;  
+    justify-content: center;
+    padding: 20px;
+    font-size: 30px;
+    kerning: auto;
+    margin-top: 10%;
+    
+}
+
+.desc {
+    font-family: 'ABeeZee';
+    justify-content: top;
+    kerning: auto;
+    font-weight: lighter;
+    text-align: left;
+    grid-area: desc;  
+    padding: 20px;
+    font-size: 22px;
+    letter-spacing: auto;
+    overflow-y: scroll;
+    height: 33%;
+}
+
+.houseInfo img {
+    font-family: 'ABeeZee';
+    grid-area: picture; 
+    height: auto;
+    width: 100%;
+}
+
+/* scrollbar colors */
+#Ravenclaw::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: rgb(171, 108, 0);
+}
+#Ravenclaw::-webkit-scrollbar {
+	width: 10px;
+	background-color: rgb(130, 83, 2);
+}
+#Ravenclaw::-webkit-scrollbar-thumb {
+	background-color: #008eb5;
+	border: 2px solid #555555;
+}
+
+#Gryffindor::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: darkred;
+}
+#Gryffindor::-webkit-scrollbar {
+	width: 10px;
+	background-color: darkred;
+}
+#Gryffindor::-webkit-scrollbar-thumb {
+	background-color: goldenrod;
+	border: 2px solid #555555;
+}
+
+
+#Slytherin::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background-color: rgb(15, 87, 0);
+}
+#Slytherin::-webkit-scrollbar {
+	width: 10px;
+	background-color:  rgb(15, 87, 0);
+}
+#Slytherin::-webkit-scrollbar-thumb {
+	background-color: black;
+	border: 2px solid #000000;
+}
+
+
+#Hufflepuff::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background-color: rgb(254, 203, 0);
+}
+#Hufflepuff::-webkit-scrollbar {
+	width: 10px;
+	background-color:  rgb(254, 203, 0);
+}
+#Hufflepuff::-webkit-scrollbar-thumb {
+	background-color: black;
+	border: 2px solid #000000;
+}
+
+

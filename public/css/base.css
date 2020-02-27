@@ -1,0 +1,42 @@
+html, body{
+    height: 100%;
+    margin: 0px;
+    position: absolute;
+    width: 100%;
+  }
+
+  #hiddenPlayer { 
+    z-index: -1111;
+    display: none;
+    height: 0px;
+
+  }
+  
+.alwaysVisible #logo { 
+    z-index: 9999999999999;
+    width: 70px;
+    height: auto;
+    position: absolute;
+    clear: both;
+  }
+  
+
+* {cursor: url(http://cur.cursors-4u.net/user/use-1/use160.cur), auto !important;} 
+
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: rgb(72, 72, 72);
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	background-color: rgb(72, 72, 72);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgb(0, 0, 0);
+	border-radius: 10px;
+	background-image: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 50%,rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.5) 75%, transparent 75%, transparent)
+}
