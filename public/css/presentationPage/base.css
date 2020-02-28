@@ -1,0 +1,360 @@
+#showPresentation {
+margin: 0px;
+font-family: 'Jolly Lodger';
+position: absolute;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+background: radial-gradient(#fc0101, #000000);
+background-repeat: no-repeat;
+background-size: cover; 
+background-position: center;
+}
+
+#harryGlasses {
+position: fixed; 
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+#about {
+grid-area: mainOne;
+margin-top: -50px;
+margin-left: -50px;
+}
+
+#problem{
+grid-area: mainTwo;
+margin-top: -50px;
+margin-right: -50px;
+}
+
+#strength, #golden {
+grid-area: mainThree;
+margin-left: 100px;
+position: absolute;
+}
+
+#ops {
+grid-area: mainFour;
+margin-left: -100px;
+font-size: 22px;
+}
+
+#demo {
+grid-area: mainFive;
+margin-bottom: -50px;
+margin-left: -50px;
+}
+
+#question {
+grid-area: mainSix;    
+margin-bottom: -50px;
+margin-right: -50px;
+}
+
+.container {
+position: fixed; 
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+display: grid;
+grid-template-columns: 0px 300px 300px 0px;
+grid-template-rows: auto;
+justify-items: center;
+justify-content: center;	
+grid-template-areas: 
+"header header header header"
+". mainOne mainTwo ."
+"mainThree . . mainFour"
+". mainFive mainSix .";
+}
+
+.card {
+width: 100px;
+height: 100px;
+font-size: 30px;
+font-weight: bold;
+color: darkgoldenrod;
+background-color: black;
+border-radius: 50%;
+line-height: 100px;
+text-align: center;
+align-items: center;
+}
+
+#luna {
+width: 150px;
+height: auto;
+position: absolute;  
+grid-area: mainFour; 
+margin-top: -120px; 
+margin-left: -15px;
+transform: rotate(45deg); 
+opacity: 0;
+transform: rotate(45deg);
+transition: 1s ease-in; 
+z-index: -1;
+}
+
+#luna:hover{
+transform: rotate(45deg);
+transition: 1s ease-in-out; 
+}
+
+#ops:hover #luna{
+visibility: visible;
+opacity: 1;
+z-index: -1;
+}
+
+#swear {
+opacity: 0;
+width: 400px;
+height: auto;
+margin-left: 30px;
+margin-top: -45px;
+background-repeat: no-repeat;
+background-size: cover; 
+background-position: center;
+transition: .5s ease-in; 
+transform: rotate(-5deg);
+z-index: -1;
+}
+
+#swear:hover{
+opacity: 0;
+}
+
+#demo:hover #swear{
+visibility: visible;
+opacity: 1;
+z-index: -1;
+}
+
+#golden {
+opacity: 0;
+width: 250px;
+height: auto;
+transition: .5s ease-in; 
+z-index: -1;
+margin-top:-175px;
+margin-left: -125px;
+}
+
+#golden:hover{
+opacity: 0;
+}
+
+#problem:hover #golden{
+visibility: visible;
+opacity: 1;
+z-index: -1;
+
+}
+
+#problem:hover{
+background-color: goldenrod;
+color: black;      
+transition: .5s ease-in; 
+border: 1px solid black;
+}
+
+#harry {
+width: 120px;
+height: auto;
+position: absolute;  
+grid-area: mainOne; 
+margin-top: -89px; 
+margin-left: 170px;
+opacity: 0;
+-webkit-box-reflect: below 170px 
+    -webkit-gradient(linear, left top, left bottom, 
+    from(transparent), 
+    color-stop(30%, transparent) , 
+    to(rgba(250, 250, 250, 0.7)));
+transition: 1s ease-in; 
+z-index: -1;
+}
+
+#harry:hover{
+opacity: 0;
+transition: 1s ease-in-out; 
+}
+
+#about:hover #harry{
+visibility: visible;
+opacity: 1;
+z-index: -1;
+}
+
+#luna {
+width: 150px;
+height: auto;
+position: absolute;  
+grid-area: mainFour; 
+margin-top: -120px; 
+margin-left: -15px;
+transform: rotate(45deg); 
+opacity: 0;
+transform: rotate(45deg);
+transition: 1s ease-in; 
+z-index: -1;
+}
+
+#luna:hover{
+transform: rotate(45deg);
+transition: 1s ease-in-out; 
+}
+
+#ops:hover #luna{
+visibility: visible;
+opacity: 1;
+z-index: -1;
+}
+
+#spell {
+width: 150px;
+height: auto;
+position: absolute;  
+grid-area: mainFour; 
+margin-top: -120px; 
+margin-left: -15px;
+transform: rotate(45deg); 
+opacity: 0;
+transform: rotate(45deg);
+transition: .5s ease-in; 
+z-index: -1;
+}
+
+#spell:hover{
+transform: rotate(45deg);
+transition: .5s ease-in-out; 
+}
+
+#strength:hover #spell{
+visibility: visible;
+opacity: 1;
+z-index: -1;
+}
+
+#showBio, #showOps, #showPos, #showProblemDomain{
+border: 3px solid black;
+background-color: blanchedalmond;
+opacity: 1;
+z-index: 99;
+overflow-y: scroll;
+position: fixed; 
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+opacity: 1;
+width: 75%;
+height: 60%;
+margin:0px auto;
+}
+
+.team{
+text-align: center;
+margin: auto;
+font-size: 55px;
+
+}
+
+#hPic{
+width: 110px;
+height: 150px;
+float: left;
+margin-left: 20px;
+}
+
+#henok, #sian, #jordan, #randee, #ta {
+clear: both;
+padding-top: 5%;
+padding-bottom: 5%;
+}
+
+#rPic{ 
+width: 150px;
+height: 100px;
+float: right;
+margin-right: 20px;
+}
+
+#sPic{
+width: 150px;
+height: 150px;
+float: right;
+margin-right: 20px;
+}
+
+#jPic{
+width: 150px;
+height: 150px;
+float: left;
+margin-left: 20px;
+}
+
+#hBio, #jBio, #tBio{
+font-family: monospace;
+font-size: 15px;
+text-align: right;
+margin-top: 5%;
+
+}
+
+#rBio, #sBio {
+font-family: monospace;
+font-size: 15px;
+text-align: left;
+}
+
+#sBio {
+margin-top: 5%;
+}
+
+#tPic{
+width: 300px;
+height: 220px;
+float: left;
+margin-left: 20px;
+}  
+
+#wand {
+    float: left;
+    width: 50%;
+    display: flex;
+}
+
+
+#posList, #opsList, #pdList {
+    font-size: xx-large;
+    margin-right: 2%;
+    margin-top: 5%;
+    text-align: right;
+    float: left;
+}
+
+#wand, #rollEyes {
+    float: left;
+    width: 50%;
+    display: flex;
+}
+
+#pd {
+    float: right;
+    width: 30%;
+    display: flex;
+}
+#pdList {
+    float: left;
+    width: 60%;
+}
+
+#pdList li {
+    padding: 10px;
+    font-family: monospace;
+    kerning: auto;
+}
