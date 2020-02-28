@@ -10,6 +10,7 @@
     background-size: cover;
     background-attachment: fixed;
     z-index: -2;
+
   }
 
   #hallWrapper {
@@ -146,4 +147,57 @@
 	border: 2px solid #000000;
 }
 
+#towFoes{
+  font-family: Jolly Lodger;
+  text-align: center; 
+  font-size: 44px;
+  color: white;
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
 
+
+#buttons > button, select{
+  font-family: 'Jolly Lodger';
+  font-size: 22px;
+  letter-spacing: 1px;
+  padding:0px 6px;
+  background-color: rgba(0,0,0,0.4);
+  border: 1px solid white;
+  color: #fff;
+  width: 100%;
+  margin: 0px auto;
+}
+
+#buttons > button[type="submit"]{
+  width: 40%;
+  display: inline-block;
+  min-width: 30%;
+  font-size: 22px;
+  text-decoration: none;
+  text-align: center;
+  height: auto;
+  background-color: rgba(139, 42, 0, 0.66);
+}
+
+#buttons > button[type="submit"]:hover{
+  background-color: rgba(139, 42, 0);
+}
+
+#buttons{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#warning {
+  color: #eee;
+  font-family: Jolly Lodger;
+  font-size: 55px;
+  width: 70%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  margin: 0px auto;
+  margin-top: 20%;
+}

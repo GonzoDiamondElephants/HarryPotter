@@ -17,6 +17,7 @@ app.get('/', renderIndex);
 app.get('/weather', weatherHandler);
 app.post('/harrypotter', apiHandler);
 app.get('/hp-house', houseApiHandler);
+app.get('/patronusPage', patronusHandler);
 
 app.use(express.static('./public'));
 app.set('view engine', 'ejs');
@@ -28,10 +29,24 @@ function renderIndex(req, res) {
 let magicNumber;
 let sortedHouse = '';
 
+/// PATRONUS HANDLERFUNCTION . 
+
+function patronusHandler(req, res) {
+  let url = 'https://gde-patronus.herokuapp.com/';
+  console.log(url);
+  superagent.get(url)
+    .then(data => {
+      console.log('this is patronushandler', data);
+      res.send(data.body);
+    })
+    .catch(() => errorHandler('error 500!! something is wrong on the apiHandler function', req, res));
+
+}
+
+
 
 function apiHandler(req, res) {
   sortedHouse = req.body.sortedHouse;
-  magicNumber = req.body.total;
   let sortedRivalHouse = req.body.sortedRivalHouse;
   let URL = `https://hp-api.herokuapp.com/api/characters`;
   superagent.get(URL)
@@ -102,10 +117,8 @@ function weatherHandler(req, res) {
 /// MADEAPIHANDLER
 
 function houseApiHandler(req, res) {
-  // if (`SELECT * FROM houses WHERE house='undefined';`) {
-  //   res.send([' Ravenclaw']);
-  // }
   console.log('line 16 ', sortedHouse);
+  magicNumber = req.query.total;
   let SQL = `SELECT * FROM houses WHERE house='${sortedHouse}';`;
   console.log('INSIDE HOUSE APIHANDLER');
   client.query(SQL)
@@ -119,7 +132,6 @@ function houseApiHandler(req, res) {
         try {
           console.log('inside of try');
           let madeURL = `https://hp-houses-api.herokuapp.com/`;
-          // console.log(madeURL)
           superagent.get(madeURL)
             .then(data => {
               let apiToSQL = `INSERT INTO houses (magicNumber , house) VALUES (${magicNumber},'${sortedHouse}');`;
