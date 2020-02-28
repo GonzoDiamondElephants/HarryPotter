@@ -19,15 +19,6 @@
   <!-- Floating candles - will link to presentation <section> -->
   <div class="alwaysVisible"><img id="logo" src="https://media.giphy.com/media/51SNhLPRbhSIBmEPG5/giphy.gif"></div>
   <section id="section1">
-
-    <!-- placeholders/proof of life -->
-    <!-- <p>Heeey!</p>
-  </section>
-
-  <section id="section2">
-    <p>HEEEY! 2</p>
-  </section> -->
-
     <!-- homepage div -->
     <div id="homePage">
       <div id="hogwartsBackground">
@@ -39,7 +30,7 @@
 
             <p class="quizQuestion">What class are you most excited about?</p>
             <select name="favClass">
-              <!-- <option value="0" disabled selected>Pick your favorite...</option> -->
+              <option value="0" disabled selected>Pick your favorite...</option>
               <option value="1">Defense Against the Dark Arts</option>
               <option value="2">Potions</option>
               <option value="3">Charms</option>
@@ -49,7 +40,7 @@
 
             <p class="quizQuestion">For your first day, you'll need a companion animal. Which will you choose?</p>
             <select name="companionAnimal">
-              <!-- <option value="0" disabled selected>Pick an animal...</option> -->
+              <option value="0" disabled selected>Pick an animal...</option>
               <option value="1">Owl</option>
               <option value="2">Snake</option>
               <option value="3">Badger</option>
@@ -59,7 +50,7 @@
 
             <p class="quizQuestion">You're at Olivander's, what wand's core would choose you?</p>
             <select name="wandType">
-              <!-- <option value="0" disabled selected>Pick a wand core...</option> -->
+              <option value="0" disabled selected>Pick a wand core...</option>
               <option value="1">Dragon Heartstring</option>
               <option value="2">White River Monster Spine</option>
               <option value="3">Snallygaster heartstring</option>
@@ -70,7 +61,7 @@
 
             <p class="quizQuestion">It's your birthday and you've received a magical gift via Owl Post. What is it?</p>
             <select name="gift">
-              <!-- <option value="0" disabled selected>Pick a gift...</option> -->
+              <option value="0" disabled selected>Pick a gift...</option>
               <option value="1">A hand-knit sweater with your first initial on the front</option>
               <option value="2">Marauder's Map</option>
               <option value="3">A Rememberal</option>
@@ -80,7 +71,7 @@
 
             <p class="quizQuestion">What book would you check out for a bit of light reading?</p>
             <select name="book">
-              <!-- <option value="0" disabled selected>Pick a book...</option> -->
+              <option value="0" disabled selected>Pick a book...</option>
               <option value="1">Self Defense Spellbook</option>
               <option value="2">Secrets of the Darkest Arts</option>
               <option value="3">Fantastic Beasts</option>
@@ -100,37 +91,222 @@
     <div id="showHouse">
       <div id="hallBackgroundTWO">
         <div class="weatherContainer"></div>
+       <div id="warning"></div>
         <div id="hallWrapper">
           <h1>You've been sorted!</h1>
-          <button type="submit" value="submit" id="patronusButton"> Show patronus</button>
-
+          
           <article id="houseHarry">
           </article>
+          <p id="towFoes">People to know and People to avoid</p>
           <section>
             <div id="hallBackground">
+              <div class="friendRibbon"></div>
               <!-- holds house house info, -->
               <!-- friends,  -->
-              <!-- twoFoes, -->
+              <div class="friendBox">
+                <div class="friendRibbon"><span>Friend</span></div>
+             </div>
+              <!-- Foes, -->
+              <div class="foeBox">
+              <div class="foeRibbon"><span>Avoid</span></div>
               <!-- weather -->
             </div>
-
+            
           </section>
+          <div id="buttons">
+            <button type="submit" value="submit" class="takeAgain" id="homeFromHall"> < Take the quiz again</button>
+          <button type="submit" value="submit" id="patronusButton"> Show patronus > </button>
+        </div>
         </div>
       </div>
     </div>
 
 
     <div id="showPatronus">
-      <p> some randome string.</p>
-      <div id="patronusContainer"> </div>
+      <div class="darkForest">
+      <div id="patronusContainer"> 
+               <!-- holds patronus name info -->
+          
+               <div id="preGenerated">
+              <div id="patronusDesc">A Patronus is an kind of Anti-Dementor – a guardian which acts as a shield between you and the Dementor.’ It’s also ‘a kind of positive force, a projection of the very things that the Dementor feeds upon – hope, happiness, the desire to survive – but it cannot feel despair, as real humans can, so the Dementors can’t hurt it.</div>
+              <div id="moreButtons">
+                <button type="submit" value="submit" class="backHome">< Back to my house</button>
+                <button type="submit" value="submit" class="takeAgain">Take the quiz again! ></button>
+      
+              </div>
+              </div>
+            </div>
+   
     </div>
+  </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div id="showPresentation">
+    <img id="harryGlasses" src="../Img/glasses.png">
+    <div class="container">
+      <div class="card" id="about">About us.
+          <div id="outerPotter">
+              <img id="harry" src="../Img/harry-removebg.png"></div>
+      </div>
+      <div class="card" id="problem">Problem.
+          <div id="snitch">
+              <img id="golden" src="../Img/snitch.gif"></div>
+      </div>
+      <div class="card" id="strength">Strengths.
+          <div id="smoke">
+          <img id="spell" src="https://webstockreview.net/images/smoke-png-gif-1.gif"></div>
+      </div>
+      <div class="card" id="ops">Opportunities.
+          <div id="lovegood">
+              <img id="luna" src="../Img/luna-removebg.png"></div></div>
+      <div class="card" id="demo">Demo.
+          <div id="solemnly">
+              <img id="swear" src="../Img/solemnlySwear.gif"></div>
+      </div>
+      <div class="card" id="question">Q & A</div>
+  </div>
+
+  
+  <div id="showBio">
+    <section class="clearDiv">
+      <p class="team">Team Gonzo Diamond Elephants</p>
+      <div id="henok">      
+    <img id="hPic" src="../Img/henok.jpg">
+    <p id="hBio">My name is Henok Gebremedhn, I am a software developer. I am Gryffindor outside of Code Fellows, I have worked for small companies in East Africa and Ethiopia as a manager. My hobbies are going to the gym and spending time with family and friends.</p>
+</div>
+
+<div id="randee"> 
+    <img id="rPic" src="../Img/randee.jpg">
+    <p id="rBio">By night Randee is a software developer. By day she is an urban farmer and entrepreneur with a background in marketing and corrections. Born to muggle parents, but with magical abilities, Randee is a fiercely loyal alumni of Slytherin house. Slytherin has helped me on my way to greatness!</p>
+  </div>
+
+
+  <div id="jordan"> 
+    <img id="jPic" src="../Img/jordan.jpg">
+    <p id="jBio">As an accomplished Hufflepuff, Jordan has worked as a paramedic in New Zealand, and a photographer in the Seattle area. His goals now include finishing the daytime 401 Java course. Jordan loves long walks on the beach with other peoples dogs.</p>
+  </div>
+  
+  
+  <div id="sian"> 
+    <img id="sPic" src="../Img/siansweird.JPEG">
+    <p id="sBio">Ravenclaw through and through, Sian enjoys adding a little sparkle to people's day almost as much as she loves her husband & 3 dogs. Wit beyond measure is a woman's greatest treasure. </p>
+  </div>
+
+    <div id="ta"> 
+    <img id="tPic" src="../Img/ta.jpg">
+    <p id="tBio">Honorary muggle members of the gitSorted tribe, these 2 wizard-like TA's were unknowingly recruited into our weird wizarding-world and enjoy helping us solve our problems almost as much as they enjoy giving us 100% on our labs.</p>
+  </div>
+    </section>
+  </div>
+
+  <div id="showPos">
+    <div class="clearDiv">
+     <p class="team">Team Strengths</p>
+      <img id="wand" src="https://66.media.tumblr.com/e5e401e35d609e217c19a24204360b8d/tumblr_mg3h0yvGFD1rgpyeqo1_500.gif">      
+      <ul id="posList">
+        <li>Communication</li>
+        <li>Ownership</li>
+        <li>Support</li>
+        <li>Unity</li>
+        <li>NO MERGE CONFLICTS!!</li>
+      </ul>
+
+    </div>
+  </div>
+  <div id="showOps">
+    <div class="clearDiv">
+      <p class="team">Team Opportunities</p>
+      <img id="rollEyes" src="https://media3.giphy.com/media/3ohzdD7vBsozD9ft6w/source.gif">      
+      <ul id="opsList">
+        <li>Muggle Errors</li>
+        <li>Understanding Async functions</li>
+        <li>More time needed!</li>
+        <li>API Calls Slowing Page Load Times</li>
+        <li>Flash of Unstyled Content</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div id="showDemo">
+    <!-- Launches application -->
+  </div>
+
+
+  <div id="showProblemDomain">
+    <div class="clearDiv">
+    <p class="team">Problem Domain</p>
+      <img id="pd" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3b23e537-1bf4-4de8-b248-2b0691e3b916/d5yg6mv-fab2c857-6533-4d4e-abb0-5e5cebee01b5.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi8zYjIzZTUzNy0xYmY0LTRkZTgtYjI0OC0yYjA2OTFlM2I5MTYvZDV5ZzZtdi1mYWIyYzg1Ny02NTMzLTRkNGUtYWJiMC01ZTVjZWJlZTAxYjUuZ2lmIn1dXX0.tQpSwZDcFoxmpVYm2J8uvGrp6jLLcujVGDeUQBlcTEk">    
+      <ul id="pdList">
+        <li>We are solving the classic philosophical problem of what Hogwarts House one would be placed in by the great and wise Sorting Hat. To that end, our group created the gitSorted app. While the Sorting Hat would magically have access to who you are, we as developers have to go through the muggle route of having 5 questions that we ask the participant. Each question will have 5 options one can select from. Once we have the required information we are then able to use our muggle coding powers to sort the participant into their Hogwarts House.
+        </li>
+  
+        <li>
+          Furthermore, since the fantastical realm of Hogwarts is filled with magical sights and wonders, we as the developers also want to provide a stimulating visual experience for our participants. To provide this, we added as much magical CSS as our muggle code would allow.</li>
+      </ul>
+    </div>
+  </div>
 
 </body>
 <footer>
+       <div><iframe id="hiddenPlayer" src="https://www.youtube.com/embed/9B-34oE5new?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div> 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"></script>
   <script src="./js/api.js"></script>
+
 </footer>
 
 </html>

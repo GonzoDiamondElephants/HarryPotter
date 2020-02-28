@@ -14,7 +14,7 @@
 #currentWeather{ 
     text-align: center;
     color: wheat;
-    font-size: larger;
+    font-size: 22px;
 }
 
 .clear-day, .partly-cloudy-day, .cloudy, .rain, .sleet, .snow, .wind, .fog, .clear-night, .partly-cloudy-night {
