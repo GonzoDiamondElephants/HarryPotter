@@ -85,7 +85,7 @@
 .fog{
     background: url("../../img/fog.png");
     animation: animate 300s linear infinite;
-    opacity: 1;
+    opacity: .9;
 }
 
 
