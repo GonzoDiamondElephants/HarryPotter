@@ -9,25 +9,13 @@ $(document).ready(function () {
 })
 
 let total = 0;
-let sortedHouse = '';
-let sortedRivalHouse = '';
+// let sortedHouse = '';
+// let sortedRivalHouse = '';
 
-// // Sian API house constructor.
 
-function Harrypotter(obj) {
-  this.houseName = obj.houseName;
-  this.trait = obj.trait;
-  this.description = obj.description;
-  this.icon = obj.icon;
-  this.magicNumber = obj.magicNumber;
-  this.rivalHouse = obj.rival;
-}
 
-Harrypotter.prototype.render = function () {
-  const source = $('#harry-pot').html();
-  let template = Handlebars.compile(source);
-  return template(this)
-}
+
+
 
 //Application Code
 
@@ -38,34 +26,41 @@ $('#applicationForm').on('submit', function (e) {
     parseInt(e.target.companionAnimal.value) +
     parseInt(e.target.wandType.value) +
     parseInt(e.target.gift.value) +
-    parseInt(e.target.book.value)) / 5);
-
-  $.ajax('/hp-house', { method: 'get', datatype: 'json' })
-    .then(data => {
-      data.forEach(house => {
-        let normalizeData = new Harrypotter(house);
-        console.log(typeof (normalizeData.magicNumber));
-        let houseNumber = parseInt(normalizeData.magicNumber);
-        console.log('inside house render total', total);
-        if (houseNumber === total) {
-          sortedHouse = normalizeData.houseName;
-          sortedRivalHouse = normalizeData.rivalHouse;
-          console.log('sorted house', sortedHouse);
-          console.log('rival house', sortedRivalHouse);
-          let renderData = normalizeData.render();
-          $('#houseHarry').append(renderData);
-        }
-      })
-      return { total, sortedHouse, sortedRivalHouse }
-    })
+    parseInt(e.target.book.value)) / 5)
     .then((data) => {
       $.ajax({
-        url: '/harrypotter',
+        url: '/totalRoute',
         method: 'POST',
         data: JSON.stringify(data),
         contentType: 'application/json',
         dataType: 'json'
       })
+
+      // $.ajax('/hp-house', { method: 'get', datatype: 'json' })
+      //   .then(data => {
+      //     data.forEach(house => {
+      //       let normalizeData = new Harrypotter(house);
+      //       console.log(typeof (normalizeData.magicNumber));
+      //       let houseNumber = parseInt(normalizeData.magicNumber);
+      //       console.log('inside house render total', total);
+      //       if (houseNumber === total) {
+      //         sortedHouse = normalizeData.houseName;
+      //         sortedRivalHouse = normalizeData.rivalHouse;
+      //         console.log('sorted house', sortedHouse);
+      //         console.log('rival house', sortedRivalHouse);
+      //         let renderData = normalizeData.render();
+      //         $('#houseHarry').append(renderData);
+      //       }
+      //     })
+      //   })
+      // .then((data) => {
+      //   $.ajax({
+      //     url: '/harrypotter',
+      //     method: 'POST',
+      //     data: JSON.stringify(data),
+      //     contentType: 'application/json',
+      //     dataType: 'json'
+      //   })
         .then((data) => {
           renderStuff(data);
           renderMoreStuff(data);

@@ -15,7 +15,7 @@ client.on('error', err => console.error(err));
 
 app.get('/', renderIndex);
 app.get('/weather', weatherHandler);
-app.post('/harrypotter', apiHandler);
+app.post('/totalRoute', houseAndDatabase);
 app.get('/hp-house', houseApiHandler);
 
 app.use(express.static('./public'));
@@ -25,14 +25,24 @@ function renderIndex(req, res) {
   res.status(200).render('./index');
 }
 
-let magicNumber;
-let sortedHouse = '';
+function houseAndDatabase(req, res) {
+  // WRONG next 2 comments
+  // let sortedHouse = req.body.sortedHouse;
+  let magicNumber = req.body.total;
+  // let sortedRivalHouse = req.body.sortedRivalHouse;
+  let SQL = `SELECT * FROM houses WHERE house='${sortedHouse}';`;
+  client.query(SQL)
+    .then(result => {
+      if (result.rows.length > 0 && result.rows[0] === undefined) {
+        res.send(result.rows[0]);
+      } else {
+        houseApiHandler(magicNumber);
+      }
+    })
+}
 
 
-function apiHandler(req, res) {
-  sortedHouse = req.body.sortedHouse;
-  magicNumber = req.body.total;
-  let sortedRivalHouse = req.body.sortedRivalHouse;
+function getCharacters(req, res) {
   let URL = `https://hp-api.herokuapp.com/api/characters`;
   superagent.get(URL)
     .then(data => {
@@ -54,7 +64,7 @@ function apiHandler(req, res) {
       }
       res.status(200).json({ friends, foes })
     })
-    .catch(() => errorHandler('error 500!! something is wrong on the apiHandler function', req, res));
+    .catch(() => errorHandler('error 500!! something is wrong on the getCharacters function', req, res));
 }
 
 //constructor function for friends and foes
@@ -68,6 +78,22 @@ function Foes(data) {
   this.name = data.name;
   this.house = data.house;
   this.image = data.image;
+}
+
+function Harrypotter(obj) {
+  this.houseName = obj.houseName;
+  this.trait = obj.trait;
+  this.description = obj.description;
+  this.icon = obj.icon;
+  this.magicNumber = obj.magicNumber;
+  this.rivalHouse = obj.rival;
+}
+
+
+Harrypotter.prototype.render = function () {
+  const source = $('#harry-pot').html();
+  let template = Handlebars.compile(source);
+  return template(this)
 }
 
 Friends.prototype.render = function () {
@@ -101,40 +127,26 @@ function weatherHandler(req, res) {
 
 /// MADEAPIHANDLER
 
-function houseApiHandler(req, res) {
-  // if (`SELECT * FROM houses WHERE house='undefined';`) {
-  //   res.send([' Ravenclaw']);
-  // }
-  console.log('line 16 ', sortedHouse);
-  let SQL = `SELECT * FROM houses WHERE house='${sortedHouse}';`;
-  console.log('INSIDE HOUSE APIHANDLER');
-  client.query(SQL)
-    .then(result => {
-      console.log('after dot then before if');
-
-      if (result.rows.length > 0 && result.rows[0] === undefined) {
-        res.send(result.rows[0]);
-        console.log('inside of if');
-      } else {
-        try {
-          console.log('inside of try');
-          let madeURL = `https://hp-houses-api.herokuapp.com/`;
-          // console.log(madeURL)
-          superagent.get(madeURL)
+function houseApiHandler(potatoMagicNumber) {
+  let madeURL = `https://hp-houses-api.herokuapp.com/`;
+  superagent.get(madeURL)
+    .then(data => {
+      data.forEach(house => {
+        let normalizeData = new Harrypotter(house);
+        if (houseNumber === potatoMagicNumber) {
+          sortedHouse = normalizeData.houseName;
+          sortedRivalHouse = normalizeData.rivalHouse;
+          let renderData = normalizeData.render()
             .then(data => {
-              let apiToSQL = `INSERT INTO houses (magicNumber , house) VALUES (${magicNumber},'${sortedHouse}');`;
+              let apiToSQL = `INSERT INTO houses (magicNumber, house) VALUES (${potatoMagicNumber},'${sortedHouse}');`;
               client.query(apiToSQL);
               res.send(data.body);
-
             })
-            .catch((err) => errorHandler(`error 500 !! something has wrong on madeApiHandler, ${err.message}`, req, res));
+          $('#houseHarry').append(renderData);
         }
-        catch (error) {
-          errorHandler('muggle error.', req, res);
-        }
-      }
+      })
     })
-
+    .catch((err) => errorHandler(`error 500 !! something has wrong on made houseApiHandler, ${err.message}`, req, res));
 }
 
 //helper functions (error catching)
