@@ -3,9 +3,9 @@ Software Requirements
 Vision
 
 
-* **What is the vision of this product?** A Harry Potter-themed app for users to enter some info & get sorted into a Hogwarts House
+* **What is the vision of this product?** A Harry Potter-themed app for users to enter a questionaire & get sorted into a Hogwarts House
 
-* **What pain point does this project solve?** This app is purely for fun and helps the user know what house they belong in. Once sorted, an API call will generate a list of characters from their house & a couple of characters from competing houses so the user knows who to watch out for! It will also show some fun facts about the location and contain a beautiful user interface that will keep them engaged.
+* **What pain point does this project solve?** This app is purely for fun and helps the user know what house they belong in. Once sorted, an API call will generate a list of characters from their house & a character from the competing house so the user knows who to watch out for! It will also contain a beautiful user interface that will keep them engaged
 
 * **Why should we care about your product?** The user should be able to participate in the magical Harry Potter universe and have fun while doing it.
 
@@ -14,11 +14,11 @@ Scope (In/Out)
 
 * Describe the individual features that your product will do.
 High overview of each. Only need to list 4-5
-- Create a form (or an application) for user to fill out & generate a bio
+- Create a form (or an application) for user to fill out 
 - Use the user data to populate a house they belong in
 - Use HP-API to pull names and images of characters from your sorted house
 - Use HP-API to pull names and images of characters from competing houses
-- Using DarkSky API to pull weather info from London
+- Using DarkSky API to pull weather info from genuine Hogwaurts
 - Design a color palette
 - Use a wand cursor
 
@@ -31,13 +31,6 @@ High overview of each. Only need to list 4-5
 
 
 * **What will your MVP functionality be?**
-
-
-* **What are your stretch goals?**
-
-Stretch
-What stretch goals are you going to aim for?
-Admissions form > sorting page
 * Uses the Harry Potter sorting API, Harry Potter character API, &  DarkSky
 * The form will take in information about the user & store in a database
 * DarkSky will alert the user to the weather at Hogwarts
@@ -47,6 +40,12 @@ Admissions form > sorting page
 - 1 server.js
 - An app.js that will pull the info from the API
 - 1 database & a matching schema
+
+* **What are your stretch goals?**
+
+Stretch
+What stretch goals are you going to aim for?
+Admissions form > sorting page
 
 Functional Requirements
 List the functionality of your product. This will consist of tasks such as the following:
