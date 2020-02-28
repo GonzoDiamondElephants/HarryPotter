@@ -28,7 +28,7 @@
 
 .clear-day{
     animation: animate 800000s linear infinite; 
-  background: url("../../img/sun.png");
+  background: url("../../Img/sun.png");
   background-size: 100%;
   opacity: 1.5;
   background-repeat: no-repeat;
@@ -36,33 +36,33 @@
     }
 
  .wind{
-        background: url("../../img/wind.gif"); 
+        background: url("../../Img/wind.gif"); 
         animation: animate 60s linear infinite;
     }
 
 .partly-cloudy-day{
-    background: url("../../img/partly-cloudy-day.png");
+    background: url("../../Img/partly-cloudy-day.png");
     animation: animate 600s linear infinite;
     background-size: 700px;
 }
 
 .snow{
-    background: url("../../img/snow2.png");
+    background: url("../../Img/snow2.png");
     animation: snow 100s linear infinite;
 }
 
 .sleet{
-    background:url("../../img/sleet.png");
+    background:url("../../Img/sleet.png");
     animation: snow 5s linear infinite;
     background-size: 10% 300px;
 }
 
 .rain{
-    background: url("../../img/rain.gif");
+    background: url("../../Img/rain.gif");
 }
 
 .partly-cloudy-night{ 
-    background: url("../../img/partly-cloudy-night.png");
+    background: url("../../Img/partly-cloudy-night.png");
     animation: animate 900s linear infinite;
     opacity: .8;
     filter: brightness(1);
@@ -77,13 +77,13 @@
 }
 
 .cloudy{
-    background: url("https://www.transparentpng.com/thumb/clouds/Ol3U8W-clouds-free-download-transparent.png");
+    background: url("../../Img/cloudy.png");
     animation: animate 2000s linear infinite;
     background-size: 700px;
 }
 
 .fog{
-    background: url("../../img/fog.png");
+    background: url("../../Img/fog.png");
     animation: animate 300s linear infinite;
     opacity: 1;
 }
