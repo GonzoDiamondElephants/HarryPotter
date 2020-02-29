@@ -90,7 +90,22 @@
 
     <div id="showHouse">
       <div id="hallBackgroundTWO">
-        <div class="weatherContainer"></div>
+        <div class="weatherContainer">
+          <form>
+          <select name="weather">
+            <option value="clear-day">clear-day</option>
+            <option value="cloudy">cloudy</option>
+            <option value="fog">fog</option>
+            <option value="partly-cloudy-day">partly-cloudy-day</option>
+            <option value="partly-cloudy-night">partly-cloudy-night</option>
+            <option value="rain">rain</option>
+            <option value="sleet">sleet</option>
+            <option value="snow">snow</option>
+            <option value="wind">wind</option>
+          </select>
+          <button type="submit" value="submit" class="changeWeather">Change the weather</button>
+        </form>
+        </div>
        <div id="warning"></div>
         <div id="hallWrapper">
           <h1>You've been sorted!</h1>

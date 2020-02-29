@@ -115,15 +115,18 @@ function renderMoreStuff(students) {
 
 //Weather ajax call
 
+let dataValues;
+
 $.ajax('/weather', { method: 'get', datatype: 'json' })
   .then(data => {
     console.log(data)
-    const dataValues = Object.values(data)
+    dataValues = Object.values(data)
     for (let i = 0; i < 1; i++) {
       $('.weatherContainer').append(`<div class=${dataValues[i]}></div>`, `<p  id="currentWeather">The current weather at Hogwarts is: ${dataValues[1]}.`);
       console.log('one more', dataValues);
     }
   })
+
 
 $('#patronusButton').on('click', function (e) {
   e.preventDefault();
@@ -145,6 +148,11 @@ $('#patronusButton').on('click', function (e) {
   $('#showDemo').hide();
   $('#showProblemDomain').hide();
 })
+
+
+
+
+
 
 $('.backHome').on('click', function (e) {
   e.preventDefault();
